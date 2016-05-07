@@ -1,0 +1,30 @@
+<page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd" backgroundSpanUnderStatusBar="true">
+	
+	<stack-layout id="container">
+		<label text="Register to Firebase" id="main-label" color="black" />
+
+		<grid-layout rows="auto, auto, auto" id="form-controls">
+
+			<text-field
+				id="username" text="{{ user.username }}" hint="User name"
+				returnKeyType="next" returnPress="focusEmail" row="0"
+				autocorrect="false" autocapitalizationType="words"/>
+
+			<text-field
+				id="email" text="{{ user.email }}" hint="Email" keyboardType="email"
+				returnKeyType="next" returnPress="focusPassword" row="1"
+				autocorrect="false" autocapitalizationType="none"/>
+
+			<text-field 
+				id="password" secure="true" text="{{ user.password }}" hint="Password"
+				row="2" returnKeyType="done" returnPress="submit"/>
+
+			<activity-indicator busy="{{ authenticating }}" rowSpan="2" />
+			
+		</grid-layout>
+
+		<button text="Register" id="submit-button" tap="submit" />
+
+	</stack-layout>
+
+</page>

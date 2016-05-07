@@ -1,0 +1,29 @@
+@import url("~/views/login/login-common.css");
+
+#background {
+  
+}
+
+#initial-label {
+  font-size: 25;
+}
+
+#container {
+  height: 365;
+  width: 275;
+}
+text-field {
+  margin-bottom: 10;
+}
+#main-label {
+  font-size: 28;
+  margin-top: 25;
+  margin-bottom: 32;
+}
+#sign-up-label {
+  padding-top: 10;
+  height: 44;
+}
+#forgot-password-label {
+  font-size: 13;
+}

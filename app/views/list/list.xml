@@ -1,0 +1,13 @@
+<page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd"  backgroundSpanUnderStatusBar="true" id="list-page">
+
+	<grid-layout>
+		<ListView items="{{ topicList }}">
+			<ListView.itemTemplate>
+				<StackLayout orientation="horizontal">
+					<Label text="{{ title }}" horizontalAlignment="left" verticalAlignment="center"/>
+					<Label text="{{ author }}" horizontalAlignment="left" verticalAlignment="center"/>
+				</StackLayout>
+			</ListView.itemTemplate>
+		</ListView>
+	</grid-layout>
+</page>
