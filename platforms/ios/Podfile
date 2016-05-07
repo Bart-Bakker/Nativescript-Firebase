@@ -1,0 +1,9 @@
+use_frameworks!
+
+target "Firebase" do
+# Begin Podfile - /Volumes/Work/hybrid/Nativescript/Stephane/Firebase/node_modules/nativescript-plugin-firebase/platforms/ios/Podfile 
+ pod 'Firebase', '~> 2.5.1'
+ 
+ # End Podfile 
+
+end

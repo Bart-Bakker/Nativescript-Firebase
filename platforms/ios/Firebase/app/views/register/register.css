@@ -1,0 +1,50 @@
+page {
+    background-color: white;
+    font-size: 17;
+}
+
+button, text-field {
+  margin-left: 16;
+  margin-right: 16;
+}
+
+#initial-label {
+  font-size: 30;
+}
+
+#container {
+  height: 430;
+  width: 300;
+  margin: 30;
+  background-color: white;
+}
+
+text-field {
+  padding: 10;
+  font-size: 13;
+  border-width: 1;
+  border-color: #6E595C;
+  margin-bottom: 20;
+}
+
+#container {
+  margin: 30;
+  background-color: white;
+}
+
+#main-label {
+  font-size: 25;
+  margin-top: 45;
+  margin-bottom: 10;
+  horizontal-align: center;
+  color: black;
+}
+
+#submit-button {
+  height: 40;
+  margin-top: 15;
+}
+
+#sign-up-label {
+  height: 48;
+}
