@@ -17,10 +17,13 @@ Next, Head on over to firebase.com and sign up for a free account. Your first 'F
 
 Now you can use the run command to run this app on iOS:
 
+```
 $ tns run ios --emulator
 $ tns emulate ios --device iPhone-6s
+```
 
 .. or on Android
-
+```
 $ tns run android --emulator
 $ tns emulate android --geny "Nexus 6_23"
+```
