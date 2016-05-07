@@ -21,6 +21,6 @@ $ tns run ios --emulator
 $ tns emulate ios --device iPhone-6s
 
 .. or on Android
+
 $ tns run android --emulator
 $ tns emulate android --geny "Nexus 6_23"
-
