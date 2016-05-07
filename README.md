@@ -1,20 +1,21 @@
 # Nativescript-Firebase
 
-This app is built with the NativeScript CLI. 
-Once you have the CLI installed, start by cloning this repo:
+## Installation
 
+This app is built with the [NativeScript CLI](https://github.com/NativeScript/nativescript-cli).
+Once you have the CLI [installed](https://github.com/NativeScript/nativescript-cli#installation), start by cloning this repo:
+
+## Usage
+
+```
 $ git clone https://github.com/Bart-Bakker/Nativescript-Firebase.git
-
-$ cd nativescript-plugin-firebase
-
 $ cd Firebase
+$ tns plugin add nativescript-plugin-firebase
+```
 
-Next, install the app's iOS and Android runtimes, as well as the app's npm dependencies:
+Next, Head on over to firebase.com and sign up for a free account. Your first 'Firebase' will be automatically created and made available via a URL like https://resplendent-fire-4211.firebaseio.com/
 
-$ tns install
-
-
-Now you can use the run command to run the demo app on iOS:
+Now you can use the run command to run this app on iOS:
 
 $ tns run ios --emulator
 $ tns emulate ios --device iPhone-6s
@@ -22,3 +23,4 @@ $ tns emulate ios --device iPhone-6s
 .. or on Android
 $ tns run android --emulator
 $ tns emulate android --geny "Nexus 6_23"
+
