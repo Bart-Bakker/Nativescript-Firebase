@@ -45,7 +45,7 @@ function User(info) {
 	      }).then(
 	          function (response) {
 	          	firebase.push (
-					'/GUsers', 
+					'/V1/GUsers', 
 					{
 						'username': viewModel.get("username"),
 						'UTopics': {

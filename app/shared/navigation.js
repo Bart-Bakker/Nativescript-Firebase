@@ -18,7 +18,7 @@ module.exports = {
 		});
 	},
 	signOut: function() {
-		config.invalidateToken();
+		// config.invalidateToken();
 		frameModule.topmost().navigate({
 			moduleName: "views/login/login",
 			animated: false,

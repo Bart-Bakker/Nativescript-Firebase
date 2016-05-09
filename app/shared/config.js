@@ -17,5 +17,5 @@ Object.defineProperty(configObject, "token", {
 
 module.exports = configObject;
 module.exports = {
-    apiUrl: "https://intense-torch-265.firebaseio.com/V1"
+    apiUrl: "https://intense-torch-265.firebaseio.com/"
 };

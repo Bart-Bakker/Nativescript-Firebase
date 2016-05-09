@@ -1,0 +1,12 @@
+page {
+    background-color: white;
+    font-size: 17;
+}
+
+.page-content {
+  background-color: white;
+}
+
+#topicList-cell {
+  margin: 15;
+}

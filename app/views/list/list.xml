@@ -1,9 +1,17 @@
-<page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd"  backgroundSpanUnderStatusBar="true" id="list-page">
-
+<page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd" backgroundSpanUnderStatusBar="true" id="topicList-page" class="page-content">
+	<page.actionBar>
+		<ActionBar title="Topic List" class="action-bar">
+			<!-- <NavigationButton text="Logout" tap="onNavBtnTap" visibility="visible" /> -->
+			<ActionBar.actionItems>
+				<ActionItem text="Logout" tap="onNavBtnTap" ios.position="left" />
+				<ActionItem text="Add" tap="onTopicAddBtnTap" ios.systemIcon="4" ios.position="right" android.systemIcon="ic_menu_add" android.position="popup"/>
+			</ActionBar.actionItems>
+		</ActionBar>
+	</page.actionBar>
 	<grid-layout>
-		<ListView items="{{ topicList }}">
+		<ListView items="{{ topicList }}" itemTap="onSelectTopic">
 			<ListView.itemTemplate>
-				<StackLayout orientation="horizontal">
+				<StackLayout orientation="horizontal" id="topicList-cell" >
 					<Label text="{{ title }}" horizontalAlignment="left" verticalAlignment="center"/>
 					<Label text="{{ author }}" horizontalAlignment="left" verticalAlignment="center"/>
 				</StackLayout>

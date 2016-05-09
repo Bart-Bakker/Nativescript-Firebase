@@ -3,6 +3,8 @@ var Observable = require("data/observable").Observable;
 var ObservableArray = require("data/observable-array").ObservableArray;
 var viewModul = require("ui/core/view");
 var utilsModule = require("utils/utils");
+var frame = require("ui/frame");
+
 
 var statusBarUtil = require("../../shared/utils/status-bar-util");
 var navigation = require("../../shared/navigation");
@@ -10,28 +12,43 @@ var TopicListViewModel = require("../../shared/view-models/topic-list-view-model
 
 var page;
 
-
+var topicList = new TopicListViewModel([]);
 var pageData = new Observable({
-	topicList: new ObservableArray([
-		{
-			title: "Solving global warming",
-			author: "  [ initiated by Steven ]"
-		},
-		{
-			title: "Time Management",
-			author: "  [ initiated by Paul ]"
-		},
-		{
-			title: "Testing Job",
-			author: "  [ initiated by Bart ]"
-		}
-	])
+	topicList: topicList
 });
 
 exports.loaded = function(args) {
 	page = args.object;
+	// if (page.ios) {
+	// 	var iosFrame = frame.topmost().ios;
+	// 	var controller = iosFrame.controller;
+	// 	iosFrame.navBarVisibility = "always";
+	// 	page.ios.title = 'Topic List';
+	// 	controller.navigationBarHidden = false;
+	// }
 	page.bindingContext = pageData;
+
+	statusBarUtil.configure();
+
+	topicList.empty();
+	// pageData.set("isLoading", true);
+	// topicList.load();
 };
+
+exports.onNavBtnTap = function () {
+	console.log("Navigation Logout Button Tapped!");
+	navigation.signOut();
+};
+
+exports.onTopicAddBtnTap = function () {
+	console.log("Navigation Add Button Tapped!");
+
+};
+
+exports.onSelectTopic = function(args) {
+	var selectedTopic = args.view.bindingContext;
+	console.log("TopicList Tapped! "+selectedTopic.title+","+selectedTopic.author);
+}
 
 // var groceryList = new GroceryListViewModel([]);
 // var history = groceryList.history();

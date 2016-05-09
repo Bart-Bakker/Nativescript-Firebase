@@ -33,6 +33,7 @@ exports.loaded = function(args) {
 	});
 	
 	page.bindingContext = pageData;
+	
 	statusBarUtil.configure();
 
 	username = page.getViewById("username");
