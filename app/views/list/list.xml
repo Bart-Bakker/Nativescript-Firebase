@@ -1,21 +1,25 @@
 <page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd" backgroundSpanUnderStatusBar="true" id="topicList-page" class="page-content">
 	<page.actionBar>
 		<ActionBar title="Topic List" class="action-bar">
-			<!-- <NavigationButton text="Logout" tap="onNavBtnTap" visibility="visible" /> -->
 			<ActionBar.actionItems>
 				<ActionItem text="Logout" tap="onNavBtnTap" ios.position="left" />
-				<ActionItem text="Add" tap="onTopicAddBtnTap" ios.systemIcon="4" ios.position="right" android.systemIcon="ic_menu_add" android.position="popup"/>
 			</ActionBar.actionItems>
 		</ActionBar>
 	</page.actionBar>
-	<grid-layout>
-		<ListView items="{{ topicList }}" itemTap="onSelectTopic">
+	<grid-layout rows="auto, *" columns="2*, *">
+		<TextField id="newTopic" text="{{ newTopic }}" hint="Enter a New Topic Title" row="0" col="0" />
+        <Button text="Add" tap="onTopicAddBtnTap" row="0" col="1" />
+		<ListView items="{{ topicList }}" itemTap="onSelectTopic" id="topicList" row="1" colSpan="2">
 			<ListView.itemTemplate>
-				<StackLayout orientation="horizontal" id="topicList-cell" >
-					<Label text="{{ title }}" horizontalAlignment="left" verticalAlignment="center"/>
-					<Label text="{{ author }}" horizontalAlignment="left" verticalAlignment="center"/>
-				</StackLayout>
+				<grid-layout columns="*, auto">
+					<StackLayout orientation="horizontal" id="topicList-cell" >
+						<Label text="{{ title }}" horizontalAlignment="left" verticalAlignment="center"/>
+						<Label text="{{'[ initiated by ' + author + ' ]' }}" horizontalAlignment="left" verticalAlignment="center" id="author"/>
+					</StackLayout>
+					<Image src="res://ic_menu_delete" ios:visibility="collapsed" col="1" tap="delete" />
+				</grid-layout>
 			</ListView.itemTemplate>
 		</ListView>
+		<ActivityIndicator busy="{{ isLoading }}" rowSpan="2" colSpan="2" />
 	</grid-layout>
 </page>

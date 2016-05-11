@@ -17,6 +17,19 @@ module.exports = {
 			clearHistory: !!frameModule.topmost().ios
 		});
 	},
+	goToideaPage: function(args) {
+		var key=args.id;
+		var title=args.title;
+		var author=args.author;
+		frameModule.topmost().navigate({
+			moduleName: "views/ideaList/ideaList",
+			context: {
+				topicKey: key,
+				topicTitle: title,
+				topicAuthor: author
+			}
+		});
+	},
 	signOut: function() {
 		// config.invalidateToken();
 		frameModule.topmost().navigate({

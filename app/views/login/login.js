@@ -140,8 +140,8 @@ exports.submit = function() {
 };
 
 function login() {
+	disableForm();
 	user.login()
-		.then(navigation.goToListPage())
 		.catch(function() {
 			dialogsModule.alert({
 				message: "Unfortunately we could not find your account.",
@@ -149,6 +149,9 @@ function login() {
 			});
 			enableForm();
 			return Promise.reject();
+		})
+		.then( function() {
+			navigation.goToListPage()
 		});
 }
 

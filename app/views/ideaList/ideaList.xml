@@ -1,0 +1,25 @@
+<page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd" backgroundSpanUnderStatusBar="true">
+
+	<page.actionBar>
+		<ActionBar title="{{ 'Idea Lists In '+ topic_title }}">
+			<NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="onBackToTopic" />
+		</ActionBar>
+	</page.actionBar>
+	
+	<grid-layout rows="auto, *" columns="2*, *">
+		<TextField id="newIdea" text="{{ newIdea }}" hint="Enter a New Idea" row="0" col="0" />
+        <Button text="Add" tap="onIdeaAddBtnTap" row="0" col="1" />
+		<ListView items="{{ ideaList }}" itemTap="onSelectIdea" id="ideaList" row="1" colSpan="2">
+			<ListView.itemTemplate>
+				<grid-layout columns="*, auto">
+					<StackLayout orientation="horizontal" id="ideaList-cell" >
+						<Label text="{{ title }}" horizontalAlignment="left" verticalAlignment="center"/>
+						<Label text="{{'[ added by ' + author + ' ]' }}" horizontalAlignment="left" verticalAlignment="center" id="author"/>
+					</StackLayout>
+					<Image src="res://ic_menu_delete" ios:visibility="collapsed" col="1" tap="delete" />
+				</grid-layout>
+			</ListView.itemTemplate>
+		</ListView>
+		<ActivityIndicator id="spinner" visibility="{{ busy? 'visible' : 'collapse' }}" rowSpan="2" colSpan="2" />
+	</grid-layout>
+</page>

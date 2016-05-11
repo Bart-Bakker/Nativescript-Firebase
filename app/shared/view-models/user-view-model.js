@@ -3,6 +3,26 @@ var Observable = require("data/observable").Observable;
 var validator = require("email-validator");
 var firebase = require("nativescript-plugin-firebase");
 
+function getKey() {
+	var onChildEvent = function(result) {
+        if (result.type === "ChildAdded") {            
+            if(result.value.UID === config.uid){
+            	config.key = result.key;
+            	config.username = result.value.username;
+            	return result;
+            }
+        }
+    };
+    return firebase.addChildEventListener(onChildEvent, "/V1/GUsers").then(
+        function () {
+          console.log("firebase.addChildEventListener added");
+        },
+        function (error) {
+          console.log("firebase.addChildEventListener error: " + error);
+        }
+    )   
+}
+
 function User(info) {
 	info = info || {};
 
@@ -31,11 +51,11 @@ function User(info) {
 	        type: firebase.LoginType.PASSWORD,
 	        email: viewModel.get("email"),
 	        password: viewModel.get("password")
-	      }).then(
-	        function (response) {
-	            config.uid = response.uid
+	    }).then(function (response) {
+	            config.uid = response.uid;
+	            getKey();
 	            return response;
-	        });
+	    	});
 	};
 
 	viewModel.register = function() {
@@ -48,68 +68,20 @@ function User(info) {
 					'/V1/GUsers', 
 					{
 						'username': viewModel.get("username"),
-						'UTopics': {
-							'GTopicID': ''
-						}
+						'UID': response.key
 					}
 				).then(
 					function (result) {
-					console.log("created key: "+result.key);
+						console.log("created key: "+result.key);
+						config.uid = response.key;
+						config.key = result.key;
+						config.username = viewModel.get("username");
 					}
 				);
 	            console.log(response);
 	            return response;
 	          }
 	      );
-	};
-
-
-	// viewModel.login = function() {
-	// 	return fetch(config.apiUrl + "oauth/token", {
-	// 		method: "POST",
-	// 		body: JSON.stringify({
-	// 			username: viewModel.get("email"),
-	// 			password: viewModel.get("password"),
-	// 			grant_type: "password"
-	// 		}),
-	// 		headers: {
-	// 			"Content-Type": "application/json"
-	// 		}
-	// 	})
-	// 	.then(handleErrors)
-	// 	.then(function(response) {
-	// 		return response.json();
-	// 	}).then(function(data) {
-	// 		config.token = data.Result.access_token;
-	// 	});
-	// };
-
-	// viewModel.register = function() {
-	// 	return fetch(config.apiUrl + "Users", {
-	// 		method: "POST",
-	// 		body: JSON.stringify({
-	// 			Username: viewModel.get("email"),
-	// 			Email: viewModel.get("email"),
-	// 			Password: viewModel.get("password")
-	// 		}),
-	// 		headers: {
-	// 			"Content-Type": "application/json"
-	// 		}
-	// 	})
-	// 	.then(handleErrors);
-	// };
-
-	viewModel.resetPassword = function() {
-		return fetch(config.apiUrl + "Users/resetpassword", {
-			method: "POST",
-			body: JSON.stringify({
-				Email: viewModel.get("email"),
-			}),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		})
-		.then(handleErrors);
 	};
 
 	viewModel.isValidEmail = function() {
