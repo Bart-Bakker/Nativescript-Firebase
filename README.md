@@ -15,7 +15,7 @@ $ tns platform add ios
 $ tns platform add android
 ```
 
-Next, Head on over to firebase.com and sign up for a free account. Your first 'Firebase' will be automatically created and made available via a URL like https://resplendent-fire-4211.firebaseio.com/
+Next, Head on over to firebase.com and sign up for a free account. Your first 'Firebase' will be automatically created and made available via a URL like https://resplendent-fire-4211.firebaseio.com/ in config.js file.
 
 Now you can use the run command to run this app on iOS:
 

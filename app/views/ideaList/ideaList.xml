@@ -1,7 +1,7 @@
 <page loaded="loaded" xmlns="http://schemas.nativescript.org/tns.xsd" backgroundSpanUnderStatusBar="true">
 
 	<page.actionBar>
-		<ActionBar title="{{ 'Idea Lists In '+ topic_title }}">
+		<ActionBar title="Idea Lists">
 			<NavigationButton text="Back" android.systemIcon="ic_menu_back" tap="onBackToTopic" />
 		</ActionBar>
 	</page.actionBar>
@@ -14,7 +14,7 @@
 				<grid-layout columns="*, auto">
 					<StackLayout orientation="horizontal" id="ideaList-cell" >
 						<Label text="{{ title }}" horizontalAlignment="left" verticalAlignment="center"/>
-						<Label text="{{'[ added by ' + author + ' ]' }}" horizontalAlignment="left" verticalAlignment="center" id="author"/>
+						<Label text="{{'-   ' + author }}" horizontalAlignment="left" verticalAlignment="center" id="author"/>
 					</StackLayout>
 					<Image src="res://ic_menu_delete" ios:visibility="collapsed" col="1" tap="delete" />
 				</grid-layout>

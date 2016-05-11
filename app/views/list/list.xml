@@ -14,7 +14,7 @@
 				<grid-layout columns="*, auto">
 					<StackLayout orientation="horizontal" id="topicList-cell" >
 						<Label text="{{ title }}" horizontalAlignment="left" verticalAlignment="center"/>
-						<Label text="{{'[ initiated by ' + author + ' ]' }}" horizontalAlignment="left" verticalAlignment="center" id="author"/>
+						<Label text="{{'-   ' + author }}" horizontalAlignment="left" verticalAlignment="center" id="author"/>
 					</StackLayout>
 					<Image src="res://ic_menu_delete" ios:visibility="collapsed" col="1" tap="delete" />
 				</grid-layout>

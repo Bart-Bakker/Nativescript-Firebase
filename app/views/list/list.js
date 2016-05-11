@@ -28,7 +28,15 @@ exports.loaded = function(args) {
     if (page.ios) {
         var listView = viewModule.getViewById(page, "topicList");
         swipeDelete.enable(listView, function(index) {
-            topicList.delete(index);
+            if (topicList.getItem(index).id==config.key) {
+                topicList.delete(index);
+            } else {
+                dialogsModule.alert({
+                    message: "You can't delete",
+                    okButtonText: "OK"
+                });
+            }
+            
         });
         var navigationBar = frameModule.topmost().ios.controller.navigationBar;
         navigationBar.barTintColor = UIColor.colorWithRedGreenBlueAlpha(0.011, 0.278, 0.576, 1);

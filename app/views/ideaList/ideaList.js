@@ -31,7 +31,14 @@ exports.loaded = function(args) {
     if (page.ios) {
         var listView = page.getViewById("ideaList");
         swipeDelete.enable(listView, function(index) {
-            ideaList.delete(index, topic_id);
+            if (ideaList.getItem(index).author==config.username) {
+                ideaList.delete(index, topic_id);
+            } else {
+                dialogsModule.alert({
+                    message: "You can't delete",
+                    okButtonText: "OK"
+                });
+            }
         });
     }
 
