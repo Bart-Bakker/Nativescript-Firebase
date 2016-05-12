@@ -28,7 +28,8 @@ exports.loaded = function(args) {
     if (page.ios) {
         var listView = viewModule.getViewById(page, "topicList");
         swipeDelete.enable(listView, function(index) {
-            if (topicList.getItem(index).id==config.key) {
+            console.log(topicList.getItem(index).id);
+            if (topicList.getItem(index).author==config.username) {
                 topicList.delete(index);
             } else {
                 dialogsModule.alert({
