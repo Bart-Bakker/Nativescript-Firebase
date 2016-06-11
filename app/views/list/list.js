@@ -12,6 +12,7 @@ var navigation = require("../../shared/navigation");
 var TopicListViewModel = require("../../shared/view-models/topic-list-view-model");
 
 var page;
+var listView;
 
 var topicList = new TopicListViewModel([{
 	title: "",
@@ -24,9 +25,8 @@ var pageData = new Observable({
 
 exports.loaded = function(args) {
 	page = args.object;
-
+    listView = viewModule.getViewById(page, "topicList");
     if (page.ios) {
-        var listView = viewModule.getViewById(page, "topicList");
         swipeDelete.enable(listView, function(index) {
             console.log(topicList.getItem(index).id);
             if (topicList.getItem(index).author==config.username) {
@@ -50,9 +50,6 @@ exports.loaded = function(args) {
 
 	page.bindingContext = pageData;
 	statusBarUtil.configure();
-
-	console.log("uid: "+config.uid);
-	console.log("key: "+config.key);
 
 	topicList.empty();
 	pageData.set("isLoading", true);
